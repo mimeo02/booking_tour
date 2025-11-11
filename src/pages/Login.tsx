@@ -18,8 +18,6 @@ const Login = () => {
 
   const handleLogin = (payload: LoginPayloadSchema) => {
     // todo: call api
-    console.log(payload);
-
     api
       .post("https://api.ducmanhsuncloud.click/login", {
         test: payload.username,

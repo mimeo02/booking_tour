@@ -1,12 +1,19 @@
-import { Fragment } from 'react';
-import Login from './pages/Login';
-import { Box } from '@mui/material';
-import './App.css';
+import { Box } from "@mui/material";
+import { RouterProvider } from "react-router-dom";
+import "./App.css";
+import routes from "./routes/routes";
 
 function App() {
   return (
-    <Box sx={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <Login />
+    <Box
+      sx={{
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <RouterProvider router={routes} />
     </Box>
   );
 }

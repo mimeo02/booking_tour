@@ -10,6 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 const hotelList = [
   {
@@ -77,16 +78,8 @@ const Dashboard = () => {
         }}
       >
         <TextField label="Location" variant="outlined" />
-        <TextField
-          label="Check-in"
-          type="date"
-          InputLabelProps={{ shrink: true }}
-        />
-        <TextField
-          label="Check-out"
-          type="date"
-          InputLabelProps={{ shrink: true }}
-        />
+        <DatePicker label="Check-in" />
+        <DatePicker label="Check-out" />
         <Button variant="contained" size="large">
           Search
         </Button>

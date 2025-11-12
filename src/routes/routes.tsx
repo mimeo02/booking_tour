@@ -1,8 +1,9 @@
-import { createBrowserRouter, RouteObject } from "react-router-dom";
-import Login from "../pages/Login";
-import LandingPage from "../pages/LandingPage";
+import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../pages/Dashboard";
 import HotelRooms from "../pages/HotelRooms";
+import LandingPage from "../pages/LandingPage";
+import Login from "../pages/Login";
+import SignUp from "../pages/SignUp";
 
 const routes = createBrowserRouter([
   {
@@ -15,16 +16,9 @@ const routes = createBrowserRouter([
         id: "dashboard",
         element: <Dashboard />,
       },
-    ],
-  },
-  {
-    id: "hotel-rooms",
-    path: "/hotels/:hotelId/rooms",
-    element: <LandingPage />,
-    children: [
       {
-        index: true,
-        id: "",
+        path: "/hotels/:hotelId/rooms",
+        id: "hotel-rooms",
         element: <HotelRooms />,
       },
     ],
@@ -33,6 +27,11 @@ const routes = createBrowserRouter([
     id: "login",
     path: "/login",
     element: <Login />,
+  },
+  {
+    id: "register",
+    path: "/register",
+    element: <SignUp />,
   },
   // todo: add NotFound Page
   // {

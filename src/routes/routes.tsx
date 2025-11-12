@@ -3,6 +3,7 @@ import Dashboard from "../pages/Dashboard";
 import HotelRooms from "../pages/HotelRooms";
 import LandingPage from "../pages/LandingPage";
 import Login from "../pages/Login";
+import ForgetPassword from "../pages/ForgetPassword";
 import SignUp from "../pages/SignUp";
 
 const routes = createBrowserRouter([
@@ -32,6 +33,11 @@ const routes = createBrowserRouter([
     id: "register",
     path: "/register",
     element: <SignUp />,
+  },
+  {
+    id: "forgetPassword",
+    path: "/forget-password",
+    element: <ForgetPassword />,
   },
   // todo: add NotFound Page
   // {

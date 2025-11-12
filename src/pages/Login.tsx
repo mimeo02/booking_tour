@@ -65,7 +65,12 @@ const Login = () => {
         onChange={formik.handleChange}
       />
       <Box sx={{ width: "100%", textAlign: "right" }}>
-        <Link href="#" variant="body2">
+        <Link
+          component="button"
+          type="button"
+          variant="body2"
+          onClick={() => navigate("/forget-password")}
+        >
           Forgot password?
         </Link>
       </Box>

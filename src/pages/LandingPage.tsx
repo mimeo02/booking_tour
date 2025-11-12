@@ -29,7 +29,7 @@ const LandingPage = () => {
   );
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", height: "100%" }}>
       <AppBar
         position="fixed"
         sx={{
@@ -54,12 +54,12 @@ const LandingPage = () => {
       <Box
         component="main"
         sx={{
+          my: 4,
           flexGrow: 1,
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
-        <Toolbar />
         <Outlet />
       </Box>
     </Box>

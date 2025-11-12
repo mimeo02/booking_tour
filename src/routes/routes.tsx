@@ -2,6 +2,7 @@ import { createBrowserRouter, RouteObject } from "react-router-dom";
 import Login from "../pages/Login";
 import LandingPage from "../pages/LandingPage";
 import Dashboard from "../pages/Dashboard";
+import HotelRooms from "../pages/HotelRooms";
 
 const routes = createBrowserRouter([
   {
@@ -13,6 +14,18 @@ const routes = createBrowserRouter([
         index: true,
         id: "dashboard",
         element: <Dashboard />,
+      },
+    ],
+  },
+  {
+    id: "hotel-rooms",
+    path: "/hotels/:hotelId/rooms",
+    element: <LandingPage />,
+    children: [
+      {
+        index: true,
+        id: "",
+        element: <HotelRooms />,
       },
     ],
   },

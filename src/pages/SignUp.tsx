@@ -8,15 +8,33 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { useFormik } from "formik";
 import { useState } from "react";
+import api from "../api/axios";
+import {
+  SignUpPayloadSchema,
+  signUpPayloadSchema,
+} from "../models/signup.model";
+import { useSnackbar } from "../providers/SnackbarProvider";
 
 const SignUp = () => {
   const [openOtpDialog, setOpenOtpDialog] = useState(false);
+  const { showSnackbar } = useSnackbar();
 
-  const handleSignUpSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    setOpenOtpDialog(true);
-  };
+  const formik = useFormik<SignUpPayloadSchema>({
+    initialValues: signUpPayloadSchema.getDefault(),
+    validationSchema: signUpPayloadSchema,
+    onSubmit: (values) => {
+      api
+        .post("https://api.ducmanhsuncloud.click/register", values)
+        .then(() => {
+          setOpenOtpDialog(true);
+        })
+        .catch((err) => {
+          showSnackbar(err.message || "Đã có lỗi xảy ra", "error");
+        });
+    },
+  });
 
   const handleCloseOtpDialog = () => {
     setOpenOtpDialog(false);
@@ -43,54 +61,72 @@ const SignUp = () => {
           borderRadius: 2,
         }}
         component="form"
-        onSubmit={handleSignUpSubmit}
+        onSubmit={formik.handleSubmit}
       >
         <Typography variant="h5" component="h1">
           Đăng ký
         </Typography>
         <TextField
           fullWidth
-          required
           label="Tên đăng nhập"
           placeholder="Nhập tên đăng nhập"
           name="username"
+          value={formik.values.username}
+          onChange={formik.handleChange}
+          error={formik.touched.username && Boolean(formik.errors.username)}
+          helperText={formik.touched.username && formik.errors.username}
         />
         <TextField
           fullWidth
-          required
           label="Email"
           type="email"
           placeholder="Nhập email"
           name="email"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
         />
         <TextField
           fullWidth
-          required
           label="Mật khẩu"
           type="password"
           placeholder="Nhập mật khẩu"
           name="password"
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          error={formik.touched.password && Boolean(formik.errors.password)}
+          helperText={formik.touched.password && formik.errors.password}
         />
         <TextField
           fullWidth
-          required
           label="Số điện thoại"
           placeholder="Nhập số điện thoại"
           name="phone"
+          value={formik.values.phone}
+          onChange={formik.handleChange}
+          error={formik.touched.phone && Boolean(formik.errors.phone)}
+          helperText={formik.touched.phone && formik.errors.phone}
         />
         <TextField
           fullWidth
-          required
           label="Họ và tên"
           placeholder="Nhập họ và tên"
           name="fullName"
+          value={formik.values.fullName}
+          onChange={formik.handleChange}
+          error={formik.touched.fullName && Boolean(formik.errors.fullName)}
+          helperText={formik.touched.fullName && formik.errors.fullName}
         />
         <TextField
           fullWidth
-          required
           label="CCCD/CMND"
           placeholder="Nhập CCCD/CMND"
           name="idCard"
+          value={formik.values.idCard}
+          onChange={formik.handleChange}
+          error={formik.touched.idCard && Boolean(formik.errors.idCard)}
+          helperText={formik.touched.idCard && formik.errors.idCard}
         />
         <Button variant="contained" type="submit" sx={{ width: "100%", mt: 2 }}>
           Đăng ký

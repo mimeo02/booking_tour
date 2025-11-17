@@ -53,22 +53,24 @@ const Login = () => {
       <Typography variant="h5">Đăng nhập</Typography>
       <TextField
         fullWidth
-        required
         label="Tên đăng nhập"
         placeholder="Nhập tên đăng nhập"
         name="username"
         value={formik.values.username}
         onChange={formik.handleChange}
+        error={formik.touched.username && Boolean(formik.errors.username)}
+        helperText={formik.touched.username && formik.errors.username}
       />
       <TextField
         fullWidth
-        required
         label="Mật khẩu"
         type="password"
         placeholder="Nhập mật khẩu"
         name="password"
         value={formik.values.password}
         onChange={formik.handleChange}
+        error={formik.touched.password && Boolean(formik.errors.password)}
+        helperText={formik.touched.password && formik.errors.password}
       />
       <Box sx={{ width: "100%", textAlign: "right" }}>
         <Link

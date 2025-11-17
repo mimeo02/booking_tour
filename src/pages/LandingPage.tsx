@@ -23,7 +23,7 @@ const LandingPage = () => {
     <div>
       <Toolbar />
       <Box sx={{ overflow: "auto" }}>
-        <Typography p={2}>Sidebar</Typography>
+        <Typography p={2}>Thanh bên</Typography>
       </Box>
     </div>
   );
@@ -47,7 +47,7 @@ const LandingPage = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Header
+            Trang chủ
           </Typography>
         </Toolbar>
       </AppBar>

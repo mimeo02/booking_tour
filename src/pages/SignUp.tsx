@@ -46,13 +46,13 @@ const SignUp = () => {
         onSubmit={handleSignUpSubmit}
       >
         <Typography variant="h5" component="h1">
-          Sign Up
+          Đăng ký
         </Typography>
         <TextField
           fullWidth
           required
-          label="Username"
-          placeholder="Enter username"
+          label="Tên đăng nhập"
+          placeholder="Nhập tên đăng nhập"
           name="username"
         />
         <TextField
@@ -60,40 +60,40 @@ const SignUp = () => {
           required
           label="Email"
           type="email"
-          placeholder="Enter email"
+          placeholder="Nhập email"
           name="email"
         />
         <TextField
           fullWidth
           required
-          label="Password"
+          label="Mật khẩu"
           type="password"
-          placeholder="Enter password"
+          placeholder="Nhập mật khẩu"
           name="password"
         />
         <TextField
           fullWidth
           required
-          label="Phone Number"
-          placeholder="Enter phone number"
+          label="Số điện thoại"
+          placeholder="Nhập số điện thoại"
           name="phone"
         />
         <TextField
           fullWidth
           required
-          label="Full Name"
-          placeholder="Enter full name"
+          label="Họ và tên"
+          placeholder="Nhập họ và tên"
           name="fullName"
         />
         <TextField
           fullWidth
           required
           label="CCCD/CMND"
-          placeholder="Enter CCCD/CMND"
+          placeholder="Nhập CCCD/CMND"
           name="idCard"
         />
         <Button variant="contained" type="submit" sx={{ width: "100%", mt: 2 }}>
-          Sign Up
+          Đăng ký
         </Button>
       </Box>
       <Dialog
@@ -102,14 +102,14 @@ const SignUp = () => {
         open={openOtpDialog}
         onClose={handleCloseOtpDialog}
       >
-        <DialogTitle>Verification OTP</DialogTitle>
+        <DialogTitle>Xác thực OTP</DialogTitle>
         <DialogContent>
-          <TextField autoFocus margin="dense" label="OTP Code" fullWidth />
+          <TextField autoFocus margin="dense" label="Mã OTP" fullWidth />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseOtpDialog}>Cancel</Button>
+          <Button onClick={handleCloseOtpDialog}>Hủy</Button>
           <Button onClick={handleVerifyOtp} variant="contained">
-            Verify
+            Xác thực
           </Button>
         </DialogActions>
       </Dialog>

@@ -18,26 +18,25 @@ const ForgetPassword = () => {
       component="form"
     >
       <Typography variant="h5" component="h1">
-        Forget Password
+        Quên mật khẩu
       </Typography>
       <Typography
         variant="body2"
         color="text.secondary"
         sx={{ textAlign: "center", mb: 2 }}
       >
-        Please enter the email address you'd like your password reset
-        information sent to.
+        Vui lòng nhập địa chỉ email bạn muốn gửi thông tin đặt lại mật khẩu tới.
       </Typography>
       <TextField
         fullWidth
         required
-        label="Email Address"
+        label="Địa chỉ Email"
         type="email"
-        placeholder="Enter your email"
+        placeholder="Nhập email của bạn"
         name="email"
       />
       <Button variant="contained" type="submit" sx={{ width: "100%", mt: 2 }}>
-        Submit
+        Gửi
       </Button>
     </Box>
   );

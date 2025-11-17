@@ -10,13 +10,13 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 const hotel = {
   id: 0,
-  name: "Luxury Resort & Spa",
+  name: "Khu nghỉ dưỡng & Spa sang trọng",
   address: "123 Ocean View Drive, Sunny Isles",
   location: "Sunny Isles",
   rate: 5,
   price: "$250/night",
   hotline: "1-800-555-0101",
-  status: "Available",
+  status: "Còn phòng",
   description:
     "A luxurious beachfront resort offering world-class amenities, a full-service spa, and breathtaking ocean views. Perfect for a relaxing getaway.",
   image:
@@ -26,7 +26,7 @@ const hotel = {
 const roomList = [
   {
     hotelId: 0,
-    name: "Ocean View Suite",
+    name: "Suite hướng biển",
     price: "$450/night",
     available: 5,
     image:
@@ -34,7 +34,7 @@ const roomList = [
   },
   {
     hotelId: 1,
-    name: "Deluxe King Room",
+    name: "Phòng Deluxe King",
     price: "$300/night",
     available: 10,
     image:
@@ -42,7 +42,7 @@ const roomList = [
   },
   {
     hotelId: 2,
-    name: "Courtesan au Chocolat Suite",
+    name: "Suite Courtesan au Chocolat",
     price: "$550/night",
     available: 3,
     image:
@@ -50,7 +50,7 @@ const roomList = [
   },
   {
     hotelId: 3,
-    name: "Standard Queen",
+    name: "Phòng Standard Queen",
     price: "$220/night",
     available: 15,
     image:
@@ -63,7 +63,7 @@ const HotelRooms = () => {
   // const { hotelId } = useParams<{ hotelId: string }>();
 
   if (!hotel) {
-    return <Typography variant="h5">Hotel not found.</Typography>;
+    return <Typography variant="h5">Không tìm thấy khách sạn.</Typography>;
   }
 
   return (
@@ -89,7 +89,7 @@ const HotelRooms = () => {
           <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
             {hotel.description}
           </Typography>
-          <Typography variant="h6">Details:</Typography>
+          <Typography variant="h6">Chi tiết:</Typography>
           <Typography
             variant="body2"
             color="text.secondary"
@@ -99,27 +99,27 @@ const HotelRooms = () => {
             {hotel.address}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Location: {hotel.location}
+            Địa điểm: {hotel.location}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Hotline: {hotel.hotline}
+            Đường dây nóng: {hotel.hotline}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Price: {hotel.price}
+            Giá: {hotel.price}
           </Typography>
           <Box sx={{ display: "flex", alignItems: "center", my: 1 }}>
             <Typography variant="body2" color="text.secondary" sx={{ mr: 1 }}>
-              Rating:
+              Đánh giá:
             </Typography>
             <Rating name="read-only" value={hotel.rate} readOnly />
           </Box>
           <Typography
             variant="body2"
             color={
-              hotel.status === "Available" ? "success.main" : "warning.main"
+              hotel.status === "Còn phòng" ? "success.main" : "warning.main"
             }
           >
-            Status: {hotel.status}
+            Trạng thái: {hotel.status}
           </Typography>
         </CardContent>
       </Card>
@@ -129,7 +129,7 @@ const HotelRooms = () => {
         component="h2"
         sx={{ mt: 4, textAlign: "center" }}
       >
-        Room list
+        Danh sách phòng
       </Typography>
       <Box
         sx={{
@@ -164,10 +164,10 @@ const HotelRooms = () => {
                 {room.name}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Price: {room.price}
+                Giá: {room.price}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Rooms available: {room.available}
+                Số phòng còn trống: {room.available}
               </Typography>
             </CardContent>
           </Card>

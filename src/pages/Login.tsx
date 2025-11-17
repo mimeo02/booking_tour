@@ -44,12 +44,12 @@ const Login = () => {
         borderRadius: 2,
       }}
     >
-      <Typography variant="h5">Login</Typography>
+      <Typography variant="h5">Đăng nhập</Typography>
       <TextField
         fullWidth
         required
-        label="Username"
-        placeholder="Enter username"
+        label="Tên đăng nhập"
+        placeholder="Nhập tên đăng nhập"
         name="username"
         value={formik.values.username}
         onChange={formik.handleChange}
@@ -57,9 +57,9 @@ const Login = () => {
       <TextField
         fullWidth
         required
-        label="Password"
+        label="Mật khẩu"
         type="password"
-        placeholder="Enter password"
+        placeholder="Nhập mật khẩu"
         name="password"
         value={formik.values.password}
         onChange={formik.handleChange}
@@ -71,20 +71,20 @@ const Login = () => {
           variant="body2"
           onClick={() => navigate("/forget-password")}
         >
-          Forgot password?
+          Quên mật khẩu?
         </Link>
       </Box>
       <Button variant="contained" type="submit" sx={{ width: "100%", mt: 1 }}>
-        Login
+        Đăng nhập
       </Button>
       <Typography variant="body2" sx={{ mt: 2 }}>
-        Don't have an account?{" "}
+        Chưa có tài khoản?{" "}
         <Link
           component="button"
           type="button"
           onClick={() => navigate("/register")}
         >
-          Sign Up
+          Đăng ký
         </Link>
       </Typography>
     </Box>

@@ -15,31 +15,31 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 const hotelList = [
   {
     id: 0,
-    name: "Luxury Resort & Spa",
+    name: "Khu nghỉ dưỡng & Spa sang trọng",
     address: "123 Ocean View Drive, Sunny Isles",
     rate: 5,
     hotline: "1-800-555-0101",
-    status: "Available",
+    status: "Còn phòng",
     image:
       "https://media.istockphoto.com/id/104731717/photo/luxury-resort.jpg?s=612x612&w=0&k=20&c=cODMSPbYyrn1FHake1xYz9M8r15iOfGz9Aosy9Db7mI=",
   },
   {
     id: 1,
-    name: "The Grand Budapest Hotel",
+    name: "Khách sạn Grand Budapest",
     address: "456 Mountain Pass, Alpine Valley",
     rate: 4,
     hotline: "1-800-555-0102",
-    status: "Available",
+    status: "Còn phòng",
     image:
       "https://media.istockphoto.com/id/104731717/photo/luxury-resort.jpg?s=612x612&w=0&k=20&c=cODMSPbYyrn1FHake1xYz9M8r15iOfGz9Aosy9Db7mI=",
   },
   {
     id: 2,
-    name: "Downtown Metro Hotel",
+    name: "Khách sạn Downtown Metro",
     address: "789 City Center Plaza, Metropolis",
     rate: 3,
     hotline: "1-800-555-0103",
-    status: "Limited Availability",
+    status: "Số lượng có hạn",
     image:
       "https://media.istockphoto.com/id/104731717/photo/luxury-resort.jpg?s=612x612&w=0&k=20&c=cODMSPbYyrn1FHake1xYz9M8r15iOfGz9Aosy9Db7mI=",
   },
@@ -63,7 +63,7 @@ const Dashboard = () => {
       }}
     >
       <Typography variant="h4" component="h1" sx={{ mb: 4 }}>
-        Wherever you go, Hotel Booking will take care of it.
+        Dù bạn đi đâu, Hotel Booking sẽ lo.
       </Typography>
       <Box
         component="form"
@@ -77,11 +77,11 @@ const Dashboard = () => {
           borderRadius: 2,
         }}
       >
-        <TextField label="Location" variant="outlined" />
-        <DatePicker label="Check-in" />
-        <DatePicker label="Check-out" />
+        <TextField label="Địa điểm" variant="outlined" />
+        <DatePicker label="Ngày nhận phòng" />
+        <DatePicker label="Ngày trả phòng" />
         <Button variant="contained" size="large">
-          Search
+          Tìm kiếm
         </Button>
       </Box>
       <Typography
@@ -89,7 +89,7 @@ const Dashboard = () => {
         component="h2"
         sx={{ mt: 4, textAlign: "center" }}
       >
-        Top hotels
+        Khách sạn hàng đầu
       </Typography>
       <Box
         sx={{

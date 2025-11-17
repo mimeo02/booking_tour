@@ -7,6 +7,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import reportWebVitals from "./reportWebVitals";
 import { theme } from "./theme/theme";
 import { Provider } from "jotai";
+import { SnackbarProvider } from "./providers/SnackbarProvider";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -16,7 +17,9 @@ root.render(
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Provider>
-        <App />
+        <SnackbarProvider>
+          <App />
+        </SnackbarProvider>
       </Provider>
     </ThemeProvider>
   </React.StrictMode>

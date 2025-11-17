@@ -1,13 +1,13 @@
 import { Box, Button, Link, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
-import { LoginPayloadSchema, loginPayloadSchema } from "../models/login.model";
-import { useState } from "react";
-import api from "../api/axios";
 import { useNavigate } from "react-router-dom";
+import api from "../api/axios";
+import { LoginPayloadSchema, loginPayloadSchema } from "../models/login.model";
+import { useSnackbar } from "../providers/SnackbarProvider";
 
 const Login = () => {
-  const [data, setData] = useState<any>(null);
   const navigate = useNavigate();
+  const { showSnackbar } = useSnackbar();
 
   const formik = useFormik<LoginPayloadSchema>({
     initialValues: loginPayloadSchema.getDefault(),
@@ -18,14 +18,20 @@ const Login = () => {
   });
 
   const handleLogin = (payload: LoginPayloadSchema) => {
-    // todo: call api
     api
       .post("https://api.ducmanhsuncloud.click/login", {
         username: payload.username,
         password: payload.password,
       })
-      .then((res) => setData(res.data))
-      .catch((err) => console.error(err));
+      .then((res) => {
+        navigate("/");
+        showSnackbar("Đăng nhập thành công!", "success");
+      })
+      .catch((err) => {
+        if (err instanceof Error) {
+          showSnackbar(err.message, "error");
+        }
+      });
   };
 
   return (

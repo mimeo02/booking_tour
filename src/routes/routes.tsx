@@ -6,6 +6,8 @@ import Login from "../pages/Login";
 import ForgetPassword from "../pages/ForgetPassword";
 import SignUp from "../pages/SignUp";
 import UserInvoice from "../pages/UserInvoice";
+import AdminPage from "../pages/AdminPage";
+import AdminDashboard from "../pages/AdminDashboard";
 
 const routes = createBrowserRouter([
   {
@@ -44,6 +46,17 @@ const routes = createBrowserRouter([
     id: "forgetPassword",
     path: "/forget-password",
     element: <ForgetPassword />,
+  },
+  {
+    id: "admin",
+    path: "/admin",
+    element: <AdminPage />,
+    children: [
+      {
+        index: true,
+        element: <AdminDashboard />,
+      },
+    ],
   },
   // todo: add NotFound Page
   // {

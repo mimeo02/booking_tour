@@ -11,46 +11,39 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { useEffect, useState } from "react";
+import api from "../api/axios";
 
-const hotelList = [
-  {
-    id: 0,
-    name: "Khu nghỉ dưỡng & Spa sang trọng",
-    address: "123 Ocean View Drive, Sunny Isles",
-    rate: 5,
-    hotline: "1-800-555-0101",
-    status: "Còn phòng",
-    image:
-      "https://media.istockphoto.com/id/104731717/photo/luxury-resort.jpg?s=612x612&w=0&k=20&c=cODMSPbYyrn1FHake1xYz9M8r15iOfGz9Aosy9Db7mI=",
-  },
-  {
-    id: 1,
-    name: "Khách sạn Grand Budapest",
-    address: "456 Mountain Pass, Alpine Valley",
-    rate: 4,
-    hotline: "1-800-555-0102",
-    status: "Còn phòng",
-    image:
-      "https://media.istockphoto.com/id/104731717/photo/luxury-resort.jpg?s=612x612&w=0&k=20&c=cODMSPbYyrn1FHake1xYz9M8r15iOfGz9Aosy9Db7mI=",
-  },
-  {
-    id: 2,
-    name: "Khách sạn Downtown Metro",
-    address: "789 City Center Plaza, Metropolis",
-    rate: 3,
-    hotline: "1-800-555-0103",
-    status: "Số lượng có hạn",
-    image:
-      "https://media.istockphoto.com/id/104731717/photo/luxury-resort.jpg?s=612x612&w=0&k=20&c=cODMSPbYyrn1FHake1xYz9M8r15iOfGz9Aosy9Db7mI=",
-  },
-];
+interface Hotel {
+  address: string;
+  area: string;
+  create_at: string;
+  description: string;
+  hotel_price: string;
+  hotline: string;
+  id: number;
+  image_url: string;
+  name: string;
+  rate: string;
+  review_score: string;
+  status: string;
+  update_at: string;
+}
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const [hotelList, setHotelList] = useState<Hotel[]>([]);
 
   const handleHotelClick = (hotelId: string | number) => {
     navigate(`/hotels/${hotelId}/rooms`);
   };
+
+  useEffect(() => {
+    const queryParams = "";
+    api
+      .get(`https://api.ducmanhsuncloud.click/hotels${queryParams}`)
+      .then((res) => setHotelList(res?.data || []));
+  }, []);
 
   return (
     <Box
@@ -113,10 +106,11 @@ const Dashboard = () => {
             }}
             onClick={() => handleHotelClick(hotel.id)}
           >
+            {/* todo: update image */}
             <CardMedia
               component="img"
               height="194"
-              image={hotel.image}
+              image={`https://api.ducmanhsuncloud.click${hotel.image_url}`}
               alt={hotel.name}
             />
             <CardContent>
@@ -131,7 +125,11 @@ const Dashboard = () => {
                 <LocationOnIcon sx={{ mr: 0.5 }} />
                 {hotel.address}
               </Typography>
-              <Rating name="read-only" value={hotel.rate} readOnly />
+              <Rating
+                name="read-only"
+                value={parseFloat(hotel.rate)}
+                readOnly
+              />
               <Typography variant="body2" color="text.secondary">
                 Hotline: {hotel.hotline}
               </Typography>

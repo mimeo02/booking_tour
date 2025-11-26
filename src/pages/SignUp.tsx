@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { useFormik } from "formik";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
 import {
   SignUpPayloadSchema,
@@ -19,6 +20,8 @@ import { useSnackbar } from "../providers/SnackbarProvider";
 
 const SignUp = () => {
   const [openOtpDialog, setOpenOtpDialog] = useState(false);
+  const [otp, setOtp] = useState("");
+  const navigate = useNavigate();
   const { showSnackbar } = useSnackbar();
 
   const formik = useFormik<SignUpPayloadSchema>({
@@ -41,9 +44,22 @@ const SignUp = () => {
   };
 
   const handleVerifyOtp = () => {
-    // Add your OTP verification logic here
-    console.log("Verifying OTP...");
-    handleCloseOtpDialog();
+    // todo: handle otp is required
+    const verificationData = { ...formik.values, otp };
+
+    api
+      .post("https://api.ducmanhsuncloud.click/register", verificationData)
+      .then((res) => {
+        if (res.data.message) {
+          showSnackbar("Đăng ký thành công!", "success");
+          navigate("/login");
+        } else {
+          showSnackbar(res.data.error || "Xác thực không thành công.", "error");
+        }
+      })
+      .catch((err) => {
+        showSnackbar(err.response?.data?.error || "Đã có lỗi xảy ra.", "error");
+      });
   };
 
   return (
@@ -140,7 +156,14 @@ const SignUp = () => {
       >
         <DialogTitle>Xác thực OTP</DialogTitle>
         <DialogContent>
-          <TextField autoFocus margin="dense" label="Mã OTP" fullWidth />
+          <TextField
+            autoFocus
+            margin="dense"
+            label="Mã OTP"
+            fullWidth
+            value={otp}
+            onChange={(e) => setOtp(e.target.value)}
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseOtpDialog}>Hủy</Button>

@@ -8,6 +8,7 @@ import SignUp from "../pages/SignUp";
 import UserInvoice from "../pages/UserInvoice";
 import AdminPage from "../pages/AdminPage";
 import AdminDashboard from "../pages/AdminDashboard";
+import UserManagement from "../pages/UserManagement";
 
 const routes = createBrowserRouter([
   {
@@ -55,6 +56,11 @@ const routes = createBrowserRouter([
       {
         index: true,
         element: <AdminDashboard />,
+      },
+      {
+        path: "users",
+        id: "userManagement",
+        element: <UserManagement />,
       },
     ],
   },

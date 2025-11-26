@@ -120,7 +120,7 @@ const AdminPage = () => {
   );
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", width: '100%', height: '100%'}}>
       <CssBaseline />
       <AppBar position="fixed">
         <Toolbar>

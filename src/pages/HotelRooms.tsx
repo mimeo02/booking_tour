@@ -2,9 +2,11 @@ import {
   Box,
   Card,
   CardContent,
+  CardActions,
   CardMedia,
   Rating,
   Typography,
+  Button,
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 
@@ -170,6 +172,11 @@ const HotelRooms = () => {
                 Số phòng còn trống: {room.available}
               </Typography>
             </CardContent>
+            <CardActions>
+              <Button size="small" variant="contained">
+                Đặt phòng
+              </Button>
+            </CardActions>
           </Card>
         ))}
       </Box>

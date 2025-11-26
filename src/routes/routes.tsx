@@ -5,6 +5,7 @@ import LandingPage from "../pages/LandingPage";
 import Login from "../pages/Login";
 import ForgetPassword from "../pages/ForgetPassword";
 import SignUp from "../pages/SignUp";
+import UserInvoice from "../pages/UserInvoice";
 
 const routes = createBrowserRouter([
   {
@@ -21,6 +22,11 @@ const routes = createBrowserRouter([
         path: "/hotels/:hotelId/rooms",
         id: "hotel-rooms",
         element: <HotelRooms />,
+      },
+      {
+        id: "userInvoice",
+        path: "/user-invoice",
+        element: <UserInvoice />,
       },
     ],
   },

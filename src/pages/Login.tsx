@@ -28,9 +28,10 @@ const Login = () => {
         showSnackbar("Đăng nhập thành công!", "success");
       })
       .catch((err) => {
-        if (err instanceof Error) {
-          showSnackbar(err.message, "error");
-        }
+        showSnackbar(
+          err?.response?.data?.error || "Đã có lỗi xảy ra.",
+          "error"
+        );
       });
   };
 

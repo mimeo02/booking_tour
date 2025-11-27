@@ -29,12 +29,22 @@ const SignUp = () => {
     validationSchema: signUpPayloadSchema,
     onSubmit: (values) => {
       api
-        .post("https://api.ducmanhsuncloud.click/register", values)
+        .post("https://api.ducmanhsuncloud.click/register", {
+          username: values.username,
+          email: values.email,
+          password: values.password,
+          phone_number: values.phone,
+          full_name: values.fullName,
+          citizen_id: values.idCard,
+        })
         .then(() => {
           setOpenOtpDialog(true);
         })
         .catch((err) => {
-          showSnackbar(err.message || "Đã có lỗi xảy ra", "error");
+          showSnackbar(
+            err?.response?.data?.error || "Đã có lỗi xảy ra",
+            "error"
+          );
         });
     },
   });

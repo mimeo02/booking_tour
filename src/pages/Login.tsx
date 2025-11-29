@@ -8,7 +8,6 @@ import { useSnackbar } from "../providers/SnackbarProvider";
 const Login = () => {
   const navigate = useNavigate();
   const { showSnackbar } = useSnackbar();
-
   const formik = useFormik<LoginPayloadSchema>({
     initialValues: loginPayloadSchema.getDefault(),
     validationSchema: loginPayloadSchema,
@@ -24,7 +23,11 @@ const Login = () => {
         password: payload.password,
       })
       .then((res) => {
-        navigate("/");
+        const accessToken = res?.data?.access_token;
+        const role = res?.data?.role;
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("role", role);
+        role === "admin" ? navigate("/admin") : navigate("/");
         showSnackbar("Đăng nhập thành công!", "success");
       })
       .catch((err) => {

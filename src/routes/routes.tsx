@@ -15,6 +15,8 @@ import ServiceManagement from "../pages/ServiceManagement";
 import InvoiceManagement from "../pages/InvoiceManagement";
 import LogManagement from "../pages/LogManagement";
 import ScheduleManagement from "../pages/ScheduleManagement";
+import { requireAuth } from "../ultils/authUltils";
+import NotFoundPage from "../pages/NotFoundPage";
 
 const routes = createBrowserRouter([
   {
@@ -36,6 +38,7 @@ const routes = createBrowserRouter([
         id: "userInvoice",
         path: "/user-invoice",
         element: <UserInvoice />,
+        loader: requireAuth,
       },
     ],
   },
@@ -62,44 +65,51 @@ const routes = createBrowserRouter([
       {
         index: true,
         element: <AdminDashboard />,
+        loader: requireAuth,
       },
       {
         path: "users",
         id: "userManagement",
         element: <UserManagement />,
+        loader: requireAuth,
       },
       {
         path: "hotels",
         element: <HotelManagement />,
+        loader: requireAuth,
       },
       {
         path: "rooms",
         element: <RoomManagement />,
+        loader: requireAuth,
       },
       {
         path: "services",
         element: <ServiceManagement />,
+        loader: requireAuth,
       },
       {
         path: "invoices",
         element: <InvoiceManagement />,
+        loader: requireAuth,
       },
       {
         path: "schedule",
         element: <ScheduleManagement />,
+        loader: requireAuth,
       },
       {
         path: "logs",
         element: <LogManagement />,
+        loader: requireAuth,
       },
     ],
   },
-  // todo: add NotFound Page
-  // {
-  //   id: "not-found",
-  //   path: "*",
-  //   element: <NotFound />,
-  // },
+  {
+    id: "not-found",
+    path: "*",
+    element: <NotFoundPage />,
+  },
 ]);
 
 export default routes;

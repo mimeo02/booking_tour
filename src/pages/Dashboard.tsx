@@ -7,6 +7,7 @@ import {
   CardMedia,
   Rating,
   TextField,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +15,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useEffect, useState } from "react";
 import api from "../api/axios";
 import dayjs, { Dayjs } from "dayjs";
+import { DialogRemindLogin } from "../components/DialogRemindLogin";
 
 interface Hotel {
   address: string;
@@ -37,11 +39,19 @@ const Dashboard = () => {
   const [location, setLocation] = useState("");
   const [checkInDate, setCheckInDate] = useState<Dayjs | null>(null);
   const [checkOutDate, setCheckOutDate] = useState<Dayjs | null>(null);
-
+  const isAuth = Boolean(localStorage.getItem("accessToken"));
+  const [open, setOpen] = useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
   const handleHotelClick = (hotelId: string | number) => {
     navigate(`/hotels/${hotelId}/rooms`);
   };
 
+  // const handleShowToolTip = ()
   const handleSearch = (event: React.FormEvent) => {
     const queryParams = {
       area: location ?? null,
@@ -109,9 +119,20 @@ const Dashboard = () => {
           value={checkOutDate ? dayjs(checkOutDate) : null}
           onChange={(newValue) => setCheckOutDate(newValue)}
         />
-        <Button variant="contained" size="large" onClick={handleSearch}>
-          Tìm kiếm
-        </Button>
+        {isAuth ? (
+          <Button variant="contained" size="large" onClick={handleSearch}>
+            Tìm kiếm
+          </Button>
+        ) : (
+          <Tooltip
+            title="Bạn cần đăng nhập để thực hiện hành động này"
+            placement="top"
+          >
+            <Button variant="contained" size="large" onClick={handleClickOpen}>
+              Tìm kiếm
+            </Button>
+          </Tooltip>
+        )}
       </Box>
       <Typography
         variant="h5"
@@ -187,6 +208,7 @@ const Dashboard = () => {
       ) : (
         <Typography>Không tìm thấy khách sạn phù hợp.</Typography>
       )}
+      <DialogRemindLogin open={open} handleClose={handleClose} />
     </Box>
   );
 };

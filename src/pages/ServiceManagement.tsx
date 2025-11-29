@@ -115,11 +115,11 @@ const ServiceManagement = () => {
       <Grid container spacing={2} alignItems="center" sx={{ mb: 2 }}>
         <Grid size={3}>
           <FormControl fullWidth>
-            <InputLabel>Lọc theo</InputLabel>
+            <InputLabel>Tìm kiếm theo</InputLabel>
             <Select
               size="small"
               value={searchType}
-              label="Lọc theo"
+              label="Tìm kiếm theo"
               onChange={(e) => setSearchType(e.target.value)}
             >
               <MenuItem value="service_name">Tên dịch vụ</MenuItem>
@@ -132,14 +132,14 @@ const ServiceManagement = () => {
           <TextField
             size="small"
             fullWidth
-            label="Nhập thông tin để lọc"
+            label="Nhập thông tin để Tìm kiếm"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </Grid>
         <Grid size={2}>
           <Button fullWidth variant="contained" onClick={handleSearch}>
-            Lọc
+            Tìm kiếm
           </Button>
         </Grid>
         <Grid size={3}>

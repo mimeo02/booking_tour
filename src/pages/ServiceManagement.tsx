@@ -100,14 +100,24 @@ const ServiceManagement = () => {
         </Link>
         <Typography color="text.primary">Quản lý dịch vụ</Typography>
       </Breadcrumbs>
-      <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
-        Quản lý dịch vụ
-      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          mb: 2,
+        }}
+      >
+        <Typography variant="h4" component="h1">
+          Quản lý dịch vụ
+        </Typography>
+      </Box>
       <Grid container spacing={2} alignItems="center" sx={{ mb: 2 }}>
-        <Grid size={4}>
+        <Grid size={3}>
           <FormControl fullWidth>
             <InputLabel>Lọc theo</InputLabel>
             <Select
+              size="small"
               value={searchType}
               label="Lọc theo"
               onChange={(e) => setSearchType(e.target.value)}
@@ -120,6 +130,7 @@ const ServiceManagement = () => {
         </Grid>
         <Grid size={4}>
           <TextField
+            size="small"
             fullWidth
             label="Nhập thông tin để lọc"
             value={searchTerm}
@@ -131,7 +142,7 @@ const ServiceManagement = () => {
             Lọc
           </Button>
         </Grid>
-        <Grid size={2}>
+        <Grid size={3}>
           <Button
             fullWidth
             variant="contained"

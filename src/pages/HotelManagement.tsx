@@ -104,14 +104,24 @@ const HotelManagement = () => {
         </Link>
         <Typography color="text.primary">Quản lý khách sạn</Typography>
       </Breadcrumbs>
-      <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
-        Quản lý khách sạn
-      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          mb: 2,
+        }}
+      >
+        <Typography variant="h4" component="h1">
+          Quản lý khách sạn
+        </Typography>
+      </Box>
       <Grid container spacing={2} alignItems="center" sx={{ mb: 2 }}>
-        <Grid size={4}>
+        <Grid size={3}>
           <FormControl fullWidth>
             <InputLabel>Tìm kiếm theo</InputLabel>
             <Select
+              size="small"
               value={searchType}
               label="Tìm kiếm theo"
               onChange={(e) => setSearchType(e.target.value)}
@@ -125,6 +135,7 @@ const HotelManagement = () => {
         </Grid>
         <Grid size={4}>
           <TextField
+            size="small"
             fullWidth
             label="Nhập thông tin tìm kiếm"
             value={searchTerm}
@@ -136,7 +147,7 @@ const HotelManagement = () => {
             Tìm kiếm
           </Button>
         </Grid>
-        <Grid size={2}>
+        <Grid size={3}>
           <Button
             fullWidth
             variant="contained"

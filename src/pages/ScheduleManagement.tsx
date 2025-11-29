@@ -91,14 +91,24 @@ const ScheduleManagement = () => {
         </Link>
         <Typography color="text.primary">Quản lý lịch</Typography>
       </Breadcrumbs>
-      <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
-        Quản lý lịch
-      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          mb: 2,
+        }}
+      >
+        <Typography variant="h4" component="h1">
+          Quản lý lịch
+        </Typography>
+      </Box>
       <Grid container spacing={2} alignItems="center" sx={{ mb: 2 }}>
-        <Grid size={5}>
+        <Grid size={4}>
           <FormControl fullWidth>
             <InputLabel>Tìm kiếm theo</InputLabel>
             <Select
+              size="small"
               value={searchType}
               label="Tìm kiếm theo"
               onChange={(e) => setSearchType(e.target.value)}
@@ -109,8 +119,9 @@ const ScheduleManagement = () => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid size={5}>
+        <Grid size={6}>
           <TextField
+            size="small"
             fullWidth
             label="Nhập thông tin tìm kiếm"
             value={searchTerm}

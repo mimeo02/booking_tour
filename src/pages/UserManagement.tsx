@@ -127,10 +127,11 @@ const UserManagement = () => {
         </Typography>
       </Box>
       <Grid container spacing={2} alignItems="center" sx={{ mb: 2 }}>
-        <Grid size={4}>
+        <Grid size={3}>
           <FormControl fullWidth>
             <InputLabel>Tìm kiếm theo</InputLabel>
             <Select
+              size="small"
               value={searchType}
               label="Tìm kiếm theo"
               onChange={(e) => setSearchType(e.target.value)}
@@ -144,6 +145,7 @@ const UserManagement = () => {
         </Grid>
         <Grid size={4}>
           <TextField
+            size="small"
             fullWidth
             label="Nhập thông tin"
             value={searchTerm}
@@ -155,7 +157,7 @@ const UserManagement = () => {
             Tìm kiếm
           </Button>
         </Grid>
-        <Grid size={2}>
+        <Grid size={3}>
           <Button
             fullWidth
             variant="contained"

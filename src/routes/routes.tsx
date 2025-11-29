@@ -9,6 +9,12 @@ import UserInvoice from "../pages/UserInvoice";
 import AdminPage from "../pages/AdminPage";
 import AdminDashboard from "../pages/AdminDashboard";
 import UserManagement from "../pages/UserManagement";
+import HotelManagement from "../pages/HotelManagement";
+import RoomManagement from "../pages/RoomManagement";
+import ServiceManagement from "../pages/ServiceManagement";
+import InvoiceManagement from "../pages/InvoiceManagement";
+import LogManagement from "../pages/LogManagement";
+import ScheduleManagement from "../pages/ScheduleManagement";
 
 const routes = createBrowserRouter([
   {
@@ -61,6 +67,30 @@ const routes = createBrowserRouter([
         path: "users",
         id: "userManagement",
         element: <UserManagement />,
+      },
+      {
+        path: "hotels",
+        element: <HotelManagement />,
+      },
+      {
+        path: "rooms",
+        element: <RoomManagement />,
+      },
+      {
+        path: "services",
+        element: <ServiceManagement />,
+      },
+      {
+        path: "invoices",
+        element: <InvoiceManagement />,
+      },
+      {
+        path: "schedule",
+        element: <ScheduleManagement />,
+      },
+      {
+        path: "logs",
+        element: <LogManagement />,
       },
     ],
   },

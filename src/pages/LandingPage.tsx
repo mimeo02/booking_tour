@@ -9,6 +9,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
+import Header from "../components/Header";
 
 const drawerWidth = 240;
 
@@ -46,9 +47,7 @@ const LandingPage = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Trang chủ
-          </Typography>
+          <Header ></Header>
         </Toolbar>
       </AppBar>
       <Box

@@ -11,21 +11,24 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import { ReactNode } from "react";
+import { useNavigate } from "react-router-dom";
 
-interface HeaderProps {
-  title?: string;
-  children?: ReactNode;
-}
-const Header = (props: HeaderProps) => {
+const pages = [
+  { label: "Đặt phòng", path: "/user-1" },
+  { label: "Dịch vụ", path: "/user-1" },
+  { label: "Blog", path: "/user-1" },
+  { label: "Hỗ trợ", path: "/user-1" },
+];
 
-};
+const settings = [
+  { label: "Hồ sơ cá nhân", path: "/user-1" },
+  { label: "Trang chủ", path: "/user-1" },
+  { label: "Đăng xuất", path: "/user-1" },
+];
 
-const pages = ["Đặt phòng", "Dịch vụ", "Blog","Hỗ trợ"];
-const settings = ["Hồ sơ cá nhân", "Trang chủ", "Đăng xuất"];
+const Header = () => {
+  const navigate = useNavigate();
 
-function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -49,7 +52,12 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar
+      position="fixed"
+      sx={{
+        width: "100%",
+      }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -69,68 +77,16 @@ function ResponsiveAppBar() {
           >
             LOGO
           </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{ display: { xs: "block", md: "none" } }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: "center" }}>{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-         
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+          <Box sx={{ flexGrow: 1, display: "flex" }}>
+            {pages.map((page, index) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={index}
+                onClick={() => {
+                  navigate(page.path);
+                }}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                {page.label}
               </Button>
             ))}
           </Box>
@@ -156,10 +112,15 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography sx={{ textAlign: "center" }}>
-                    {setting}
+              {settings.map((setting, index) => (
+                <MenuItem key={index} onClick={handleCloseUserMenu}>
+                  <Typography
+                    sx={{ textAlign: "center" }}
+                    onClick={() => {
+                      navigate(setting.path);
+                    }}
+                  >
+                    {setting.label}
                   </Typography>
                 </MenuItem>
               ))}
@@ -169,5 +130,5 @@ function ResponsiveAppBar() {
       </Container>
     </AppBar>
   );
-}
-export default ResponsiveAppBar;
+};
+export default Header;

@@ -1,12 +1,8 @@
 import {
-  AppBar,
   Box,
-  Drawer,
-  IconButton,
   Toolbar,
-  Typography,
+  Typography
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../components/Header";
@@ -31,25 +27,8 @@ const LandingPage = () => {
 
   return (
     <Box sx={{ display: "flex", height: "100%" }}>
-      <AppBar
-        position="fixed"
-        sx={{
-          width: "100%",
-        }}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Header ></Header>
-        </Toolbar>
-      </AppBar>
+      <Header/>
+
       <Box
         component="main"
         sx={{
